@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 34dae56b8f0d94f84b59b1d57fd33e98
+timeCreated: 1487307437
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Arkadia
+  fontNames:
+  - Arkadia
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

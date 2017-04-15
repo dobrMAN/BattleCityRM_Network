@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 35047b01479924ede85aee8f0137f5d5
+timeCreated: 1487307437
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Steamy
+  fontNames:
+  - Steamy
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
