@@ -29,5 +29,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-sync.ffs_db
+*.ffs_db
 /[Rr]ubbish/

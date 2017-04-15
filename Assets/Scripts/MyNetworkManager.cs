@@ -110,7 +110,8 @@ public class MyNetworkManager : NetworkManager//NetworkBehaviour
 
         if ((Discovery.isClient) && (Discovery.FindedIp != null))
         {
-            Discovery.StopBroadcast();
+            Debug.Log("Нашли сервер. IP:" + Discovery.FindedIp);
+            MyNetDiscovery.singleton.StopBroadcast();
             networkAddress = Discovery.FindedIp;
             networkPort = 7777;
             StartClient();
@@ -124,8 +125,8 @@ public class MyNetworkManager : NetworkManager//NetworkBehaviour
 
     public override void OnStartHost()
     {
-        Discovery.Initialize();
-        Discovery.StartAsServer();
+        MyNetDiscovery.singleton.Initialize();
+        MyNetDiscovery.singleton.StartAsServer();
         base.OnStartHost();
     }
 
@@ -148,9 +149,10 @@ public class MyNetworkManager : NetworkManager//NetworkBehaviour
 
     public void FindLocalHost()
     {
-        Discovery.showGUI = false;
-        Discovery.Initialize();
-        Discovery.StartAsClient();
+        Debug.Log("Поиск хоста в локальной сети");
+        MyNetDiscovery.singleton.showGUI = false;
+        MyNetDiscovery.singleton.Initialize();
+        MyNetDiscovery.singleton.StartAsClient();
 
     }
 

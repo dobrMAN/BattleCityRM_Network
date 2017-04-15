@@ -2,6 +2,9 @@
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
+#if (UNITY_ANDROID)
+using UnityEngine.Advertisements;
+#endif
 
 public class MainMenuController : MonoBehaviour {
     [SerializeField]
@@ -10,6 +13,10 @@ public class MainMenuController : MonoBehaviour {
     public MyNetworkManager NetMan;
 	// Use this for initialization
 	void Start () {
+#if (UNITY_ANDROID)
+        Advertisement.Initialize("1385614");
+        Debug.Log("Поддержка рекламы: "+Advertisement.isSupported);
+#endif
         _console.SetActive(true);
         DontDestroyOnLoad(_console);
         NetMan = MyNetworkManager.FindObjectOfType<MyNetworkManager>();
@@ -58,4 +65,14 @@ public class MainMenuController : MonoBehaviour {
 	{
 		AppHelper.Quit();
 	}
+
+    public void ShowAd()
+    {
+#if (UNITY_ANDROID)
+        if (Advertisement.IsReady())
+        {
+            Advertisement.Show();
+        }
+#endif
+    }
 }
