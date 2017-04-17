@@ -192,6 +192,6 @@ QualitySettings:
     Android: 2
     Samsung TV: 0
     Standalone: 5
-    WebGL: 0
+    WebGL: 5
     Windows Store Apps: 0
     iPhone: 0

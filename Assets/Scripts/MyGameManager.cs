@@ -42,6 +42,7 @@ public class MyGameManager : NetworkBehaviour {
     [SyncVar]
     public int numPlayers;
 
+    [SerializeField]
     private GameObject _waitPlayersDialog;
 
     //[SyncVar]
@@ -258,7 +259,7 @@ public class MyGameManager : NetworkBehaviour {
     // Use this for initialization
     void Start () {
         
-        _waitPlayersDialog = GameObject.Find("WaitPlayersWindow");
+        //_waitPlayersDialog = GameObject.Find("WaitPlayersWindow");
         _waitPlayersDialog.SetActive(true);
 
         wait5 = new WaitForSeconds(5.0f);
@@ -389,21 +390,23 @@ public class MyGameManager : NetworkBehaviour {
 
     }
 
-    private void FixedUpdate()
-    {
+    //private void FixedUpdate()
+    //{
 
 
-    }
+    //}
 
     public void ExitGame()
     {
-        MyNetworkManager.singleton.StopServer();
+        ClientScene.RemovePlayer(0);
+
+        //MyNetworkManager.singleton.StopServer();
         if (isLocalPlayer)
             MyNetworkManager.singleton.StopHost();
         if (isServer)
             MyNetworkManager.singleton.StopServer();
 
-       MyNetworkManager.Shutdown();
+       //MyNetworkManager.Shutdown();
         
         Destroy(GameObject.Find("MyNetworkManager"));
         AppHelper.Load("MainMenu");

@@ -177,4 +177,10 @@ public class MyNetworkManager : NetworkManager//NetworkBehaviour
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
     }
 
+    public override void OnServerRemovePlayer(NetworkConnection conn, PlayerController player)
+    {
+
+        base.OnServerRemovePlayer(conn, player);
+        Debug.Log("Игрок отключился, на сервере осталось " + numPlayers + " игрок(а)");
+    }
 }

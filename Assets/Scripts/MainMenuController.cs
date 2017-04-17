@@ -46,7 +46,9 @@ public class MainMenuController : MonoBehaviour {
     {
         AppHelper.SetParam("Level", "1");
         AppHelper.SetParam("Mode", "LocalHost");
+        //NetMan.useWebSockets = true;
         NetMan.StartHost();
+        //MyNetworkManager.singleton.StartHost();
     }
 
     public void OnConnectLocal()
