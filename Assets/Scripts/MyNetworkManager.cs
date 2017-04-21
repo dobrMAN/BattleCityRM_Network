@@ -69,7 +69,6 @@ public class MyNetDiscovery : NetworkDiscovery
 public class MyNetworkManager : NetworkManager//NetworkBehaviour
 {
     public MyNetDiscovery Discovery;
-    ////------------------------------------------------------
 
     public static void StopClientAndBroadcast()
     {

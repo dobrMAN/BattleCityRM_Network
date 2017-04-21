@@ -406,7 +406,7 @@ public class MyGameManager : NetworkBehaviour {
         if (isServer)
             MyNetworkManager.singleton.StopServer();
 
-       //MyNetworkManager.Shutdown();
+       MyNetworkManager.Shutdown();
         
         Destroy(GameObject.Find("MyNetworkManager"));
         AppHelper.Load("MainMenu");

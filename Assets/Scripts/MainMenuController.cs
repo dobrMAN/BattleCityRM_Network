@@ -39,7 +39,8 @@ public class MainMenuController : MonoBehaviour {
 	{	//Destroy (gameObject);
 		AppHelper.SetParam("Level","1");
         AppHelper.SetParam("Mode", "Single");
-        NetMan.StartHost();
+        //NetMan.StartHost();
+        MyNetworkManager.singleton.StartHost();
     }
 
     public void OnCreateHost()
@@ -47,15 +48,16 @@ public class MainMenuController : MonoBehaviour {
         AppHelper.SetParam("Level", "1");
         AppHelper.SetParam("Mode", "LocalHost");
         //NetMan.useWebSockets = true;
-        NetMan.StartHost();
-        //MyNetworkManager.singleton.StartHost();
+        //NetMan.StartHost();
+        MyNetworkManager.singleton.StartHost();
     }
 
     public void OnConnectLocal()
     {
         AppHelper.SetParam("Level", "1");
         AppHelper.SetParam("Mode", "LocalClient");
-        NetMan.FindLocalHost();
+        MyNetworkManager.singleton.GetComponent<MyNetworkManager>().FindLocalHost();
+        //NetMan.FindLocalHost();
     }
 
     public void OnOptions()

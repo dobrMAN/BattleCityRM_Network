@@ -68,30 +68,6 @@ public class Enemy : Unit {
 
     }
 
-    //public override void OnTriggerEnter(Collider other)
-    //{
-    //    if (!isServer) return;
-    //    Bullet bullet = other.GetComponent<Bullet>();
-
-    //    if ((bullet != null) &&(bullet.Parent != gameObject))
-    //    {
-    //        //Обрабатываем столкновение пули с врагом
-    //        bullet.DestroyMy();
-    //        if (!bullet.IsEnemy)
-    //        {
-    //            if (!IsPanzer || (++_panzerHits > 4))
-    //            {
-    //                UnitDestroy();
-    //                MGM.EnemyCount--;
-    //            }
-    //            else
-    //            {
-    //                //TODO Танк бронированый, обработать попадание пули в броню
-    //            }
-    //        }
-    //    }
-    //}
-
     void Hit(Bullet _bullet)
     {
         if (!_bullet.IsEnemy)

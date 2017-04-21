@@ -86,29 +86,6 @@ public class Player : Unit {
 
     }
 
-    //public override void OnTriggerEnter(Collider other)
-    //{
-    //    base.OnTriggerEnter(other);
-
-    //    if (!isServer) return;
-    //    Bullet bullet = other.GetComponent<Bullet>();
-
-    //    if ((bullet != null) && (bullet.Parent != gameObject))
-    //    {
-    //        //Обрабатываем столкновение пули с врагом
-    //        bullet.CmdDestroyMy();
-    //        if (bullet.IsEnemy)
-    //        {
-    //            PlayerDie();
-    //        }
-    //        else
-    //        {
-    //           //TODO Freeze player becouse it damaged by another player
-
-    //        }
-    //    }
-    //}
-
     void Hit(Bullet _bullet)
     {
         _bullet.DestroyMy();
