@@ -651,6 +651,19 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 11441792, guid: c992ccddea898433a80e86c66815fefb, type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7c14e507ed1e91348bf2afd63b1ed30a,
+        type: 3}
+    - target: {fileID: 11441792, guid: c992ccddea898433a80e86c66815fefb, type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441792, guid: c992ccddea898433a80e86c66815fefb, type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c992ccddea898433a80e86c66815fefb, type: 2}
   m_IsPrefabParent: 0

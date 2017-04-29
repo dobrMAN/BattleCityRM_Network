@@ -25,10 +25,11 @@ public class Player : Unit {
 
     public override void OnStartLocalPlayer()
     {
-        transform.Find("Tank/Hull").GetComponent<MeshRenderer>().material.color = Color.blue;
-        transform.Find("Tank/Gun").GetComponent<MeshRenderer>().material.color = Color.blue;
+        transform.Find("Tank/Body").GetComponent<MeshRenderer>().material.color = Color.blue;
+        transform.Find("Tank/Cannon").GetComponent<MeshRenderer>().material.color = Color.blue;
         transform.Find("Tank/Turret").GetComponent<MeshRenderer>().material.color = Color.blue;
-        
+        transform.Find("Tank/Barrel").GetComponent<MeshRenderer>().material.color = Color.blue;
+
         base.OnStartLocalPlayer();
     }
     // Update is called once per frame
@@ -82,8 +83,6 @@ public class Player : Unit {
     private void FixedUpdate()
     {
         Move();
-
-
     }
 
     void Hit(Bullet _bullet)

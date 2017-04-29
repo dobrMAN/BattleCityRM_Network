@@ -47,6 +47,7 @@ public class Enemy : Unit {
 
     private void FixedUpdate()
     {
+        //TODO Use coroutine to fire
         if (Random.Range(0, 50) > 48) Fire();
         //rb.velocity = direction * speed;
         if (isServer)
@@ -86,7 +87,7 @@ public class Enemy : Unit {
         }
         else
         {
-            //TODO Freeze player becouse it damaged by another player
+            //Ignore collisions for enemys with enemy's bullets.
             Physics.IgnoreCollision(_bullet.GetComponent<Collider>(), GetComponent<Collider>(), true);
         }
     }

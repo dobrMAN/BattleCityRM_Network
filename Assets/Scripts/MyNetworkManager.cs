@@ -66,9 +66,10 @@ public class MyNetDiscovery : NetworkDiscovery
 }
 
 [RequireComponent(typeof(MyNetDiscovery))]
-public class MyNetworkManager : NetworkManager//NetworkBehaviour
+public class MyNetworkManager : NetworkManager
 {
-    public MyNetDiscovery Discovery;
+    //public MyNetDiscovery Discovery;
+    public int maxPlayers = 2;
 
     public static void StopClientAndBroadcast()
     {
@@ -107,11 +108,11 @@ public class MyNetworkManager : NetworkManager//NetworkBehaviour
             }
         }
 
-        if ((Discovery.isClient) && (Discovery.FindedIp != null))
+        if ((MyNetDiscovery.singleton.isClient) && (MyNetDiscovery.singleton.FindedIp != null))
         {
-            Debug.Log("Нашли сервер. IP:" + Discovery.FindedIp);
+            Debug.Log("Нашли сервер. IP:" + MyNetDiscovery.singleton.FindedIp);
             MyNetDiscovery.singleton.StopBroadcast();
-            networkAddress = Discovery.FindedIp;
+            networkAddress = MyNetDiscovery.singleton.FindedIp;
             networkPort = 7777;
             StartClient();
         }
@@ -119,7 +120,8 @@ public class MyNetworkManager : NetworkManager//NetworkBehaviour
  
     private void Start()
     {
-        Discovery = gameObject.AddComponent<MyNetDiscovery>();
+        gameObject.AddComponent<MyNetDiscovery>();
+        MyNetDiscovery.singleton.Initialize();
     }
 
     public override void OnStartHost()
@@ -158,11 +160,16 @@ public class MyNetworkManager : NetworkManager//NetworkBehaviour
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
         print("Player connected to server.");
-        var spawnPosition = startPositions[numPlayers];
-        var player = (GameObject)Instantiate(base.playerPrefab, spawnPosition.position, Quaternion.identity);
+        Transform spawnPosition = startPositions[numPlayers];
+        GameObject player = (GameObject)Instantiate(base.playerPrefab, spawnPosition.position, Quaternion.identity);
         player.GetComponent<Player>().ID = numPlayers + 1;
 
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+        if (numPlayers >= maxPlayers)
+        {
+            Debug.Log("Набрано максимальное количество игроков: " + maxPlayers);
+            MyNetDiscovery.singleton.StopBroadcast();
+        }
         //base.OnServerAddPlayer(conn, playerControllerId);
     }
 
@@ -170,16 +177,15 @@ public class MyNetworkManager : NetworkManager//NetworkBehaviour
     {
         print("Player connected to server with extra messages: " + extraMessageReader);
         //base.OnServerAddPlayer( conn, playerControllerId,extraMessageReader);
-        var spawnPosition = startPositions[numPlayers];
-        var player = (GameObject)Instantiate(base.playerPrefab, spawnPosition.position, Quaternion.identity);
+        Transform spawnPosition = startPositions[numPlayers];
+        GameObject player = (GameObject)Instantiate(base.playerPrefab, spawnPosition.position, Quaternion.identity);
         player.GetComponent<Player>().ID = numPlayers + 1;
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
     }
 
     public override void OnServerRemovePlayer(NetworkConnection conn, PlayerController player)
     {
-
-        base.OnServerRemovePlayer(conn, player);
         Debug.Log("Игрок отключился, на сервере осталось " + numPlayers + " игрок(а)");
+        base.OnServerRemovePlayer(conn, player);
     }
 }

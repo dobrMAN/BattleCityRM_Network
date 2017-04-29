@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 #if (UNITY_ANDROID)
 using UnityEngine.Advertisements;
 #endif
@@ -10,7 +11,7 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField]
     private GameObject _console;
 
-    public MyNetworkManager NetMan;
+    //public MyNetworkManager NetMan;
 	// Use this for initialization
 	void Start () {
 #if (UNITY_ANDROID)
@@ -19,7 +20,7 @@ public class MainMenuController : MonoBehaviour {
 #endif
         _console.SetActive(true);
         DontDestroyOnLoad(_console);
-        NetMan = MyNetworkManager.FindObjectOfType<MyNetworkManager>();
+        //NetMan = MyNetworkManager.FindObjectOfType<MyNetworkManager>();
 	}
 	
 	// Update is called once per frame
@@ -40,6 +41,9 @@ public class MainMenuController : MonoBehaviour {
 		AppHelper.SetParam("Level","1");
         AppHelper.SetParam("Mode", "Single");
         //NetMan.StartHost();
+        //AppHelper.Load("Game");
+        SceneManager.LoadScene("LoadScreen", LoadSceneMode.Single);
+        MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 1;
         MyNetworkManager.singleton.StartHost();
     }
 
@@ -49,6 +53,7 @@ public class MainMenuController : MonoBehaviour {
         AppHelper.SetParam("Mode", "LocalHost");
         //NetMan.useWebSockets = true;
         //NetMan.StartHost();
+        MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 2;
         MyNetworkManager.singleton.StartHost();
     }
 
@@ -56,6 +61,7 @@ public class MainMenuController : MonoBehaviour {
     {
         AppHelper.SetParam("Level", "1");
         AppHelper.SetParam("Mode", "LocalClient");
+        MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 2;
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().FindLocalHost();
         //NetMan.FindLocalHost();
     }

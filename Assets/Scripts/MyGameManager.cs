@@ -33,6 +33,8 @@ public class MyGameManager : NetworkBehaviour {
     private GameObject _levelMap;
     private MapClass _mapData;
 
+    [SerializeField]
+    public ShaderVariantCollection Shaders;
     //[SyncVar]
     public bool IsSinglePlayer = false;
     //[SyncVar]
@@ -253,6 +255,8 @@ public class MyGameManager : NetworkBehaviour {
     }
     private void Awake()
     {
+        Shaders.WarmUp();
+        //Shader.WarmupAllShaders();
         //NetMan = GameObject.Find("MyNetworkManager").GetComponent<MyNetworkManager>();
     }
     //-------------------------------------------------------------------------------------------------------------------
@@ -267,9 +271,13 @@ public class MyGameManager : NetworkBehaviour {
         for (int i = 0; i < ForInitialize.Count; i++)
         {
             GameObject obj = Instantiate(ForInitialize[i]);
-            //NetworkServer.Spawn(obj);
-            //NetworkServer.UnSpawn(obj);
-            Destroy(obj);
+            obj.transform.Translate(new Vector3(10, 10, 10));
+            if (isServer)
+            {
+                NetworkServer.Spawn(obj);
+                /*networkserver.unspawn(obj);
+                networkserver.destroy(obj);*/
+            }/* else  destroy(obj)*/;
         }
 
         string mode = AppHelper.GetParam("Mode");
@@ -398,16 +406,26 @@ public class MyGameManager : NetworkBehaviour {
 
     public void ExitGame()
     {
-        ClientScene.RemovePlayer(0);
-
         //MyNetworkManager.singleton.StopServer();
         if (isLocalPlayer)
-            MyNetworkManager.singleton.StopHost();
+        {
+            //MyNetworkManager.singleton.StopHost();
+            MyNetworkManager.singleton.StopClient();
+            ClientScene.RemovePlayer(0);
+            Debug.Log("Отключен локальный игрок, на сервере осталось игрков - " + MyNetworkManager.singleton.numPlayers);
+        };
+
+        if (isClient)
+        {
+            ClientScene.RemovePlayer(0);
+            MyNetworkManager.singleton.StopClient();
+            Debug.Log("Отключен клиент, на сервере осталось игрков - " + MyNetworkManager.singleton.numPlayers);
+        }
+
         if (isServer)
             MyNetworkManager.singleton.StopServer();
 
-       MyNetworkManager.Shutdown();
-        
+        MyNetworkManager.Shutdown();
         Destroy(GameObject.Find("MyNetworkManager"));
         AppHelper.Load("MainMenu");
     }

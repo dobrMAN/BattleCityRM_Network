@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 182472b00808f914fa8dc807ff58b574
+timeCreated: 1492996068
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
@@ -97,6 +99,14 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Samsung TV
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
     maxTextureSize: 1024
     textureFormat: -1
     textureCompression: 1
