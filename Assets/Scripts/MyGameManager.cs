@@ -33,6 +33,8 @@ public class MyGameManager : NetworkBehaviour {
     private GameObject _levelMap;
     private MapClass _mapData;
 
+    public GameObject GameOverObj;
+
     [SerializeField]
     public ShaderVariantCollection Shaders;
     //[SyncVar]
@@ -41,6 +43,7 @@ public class MyGameManager : NetworkBehaviour {
     public bool IsGameStarted = false;
     //[SyncVar]
     public bool IsWaitPlayers = true;
+    public bool IsGameOver = false;
     [SyncVar]
     public int numPlayers;
 
@@ -56,7 +59,7 @@ public class MyGameManager : NetworkBehaviour {
     private int CurrentEnemySpawn = 0;
     [SerializeField]
     public List<Transform> EnemySpawns = new List<Transform>();
-    private int PlayerCount = 0;
+    //private int PlayerCount = 0;
     [SerializeField]
     private List<Player> Players = new List<Player>();
 
@@ -68,21 +71,31 @@ public class MyGameManager : NetworkBehaviour {
 
     public bool AddPlayer(Player _player)
     {
-        if (Players.Count > 1) return false;
+        //if (Players.Count > 1) return false;
 
-        int _ID = 1;
+        //int _ID = 1;
 
-        if (Players.Count > 0)
-        {
-            _ID = Players[0].ID == 1 ? 2 : 1; 
-        }
-        PlayerCount++;
-        _player.ID = _ID;
+        //if (Players.Count > 0)
+        //{
+        //    _ID = Players[0].ID == 1 ? 2 : 1; 
+        //}
+        //PlayerCount++;
+        //_player.ID = _ID;
         Players.Add(_player);
 
         return true;
     }
     //-------------------------------------------------------------------------------------------------------------------
+
+    public void RemovePlayer(Player _player)
+    {
+        Players.Remove(_player);
+        if (Players.Count<1)
+        {
+            IsGameOver = true;
+            GameOverObj.GetComponent<Animation>().Play();
+        }
+    }
 
     void SpawnBrickBlock(Vector3 pos)
     {
@@ -201,7 +214,7 @@ public class MyGameManager : NetworkBehaviour {
         {
             for (int x = 0; x < 26; x++)//MapData.GetLength(1); x++)
             {
-                var pos = new Vector3(-5.0f + 0.4f * x, 0.2f, 5.0f - 0.4f * y);
+                var pos = new Vector3(-5.0f + 0.4f * x, 0.3f, 5.0f - 0.4f * y);
                 switch (_mapData.MapData[x + 26 * y])
                 {
                     case '1':
@@ -483,5 +496,11 @@ public class MyGameManager : NetworkBehaviour {
         if (!isServer) return;
 
 
+    }
+
+    public void BaseDestructed()
+    {
+        IsGameOver = true;
+        GameOverObj.GetComponent<Animation>().Play();
     }
 }

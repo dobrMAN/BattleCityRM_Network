@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 18
+  m_StaticEditorFlags: 82
   m_IsActive: 1
 --- !u!4 &474260
 Transform:
@@ -100,7 +100,7 @@ GameObject:
   m_TagString: BulletCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 18
+  m_StaticEditorFlags: 82
   m_IsActive: 1
 --- !u!4 &4842296544940754
 Transform:

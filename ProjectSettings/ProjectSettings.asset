@@ -62,7 +62,7 @@ PlayerSettings:
   allowedAutorotateToLandscapeRight: 1
   allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
-  use32BitDisplayBuffer: 1
+  use32BitDisplayBuffer: 0
   disableDepthAndStencilBuffers: 0
   defaultIsFullScreen: 0
   defaultIsNativeResolution: 1
@@ -126,7 +126,7 @@ PlayerSettings:
   - {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 2}
   - {fileID: 1003837648029196, guid: 2bc6231283de77541b30ea38555b7a64, type: 2}
   - {fileID: 174260, guid: 1f8b37450fb3d004e9073960d4c6ff82, type: 2}
-  - {fileID: 128798, guid: 49066840851e2604f8aa7b5f8e2a7f43, type: 2}
+  - {fileID: 1855017222631556, guid: 9060800930653264289efab1e14f8a52, type: 2}
   - {fileID: 137308, guid: 0b0982252f9bbb04b8afd6b600c6ba46, type: 2}
   - {fileID: 1231929843233766, guid: 12a67370b2293c64a907d5852fbd0586, type: 2}
   metroInputSource: 1
@@ -158,7 +158,7 @@ PlayerSettings:
   AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
-  iPhoneStrippingLevel: 0
+  iPhoneStrippingLevel: 1
   iPhoneScriptCallOptimization: 0
   ForceInternetPermission: 1
   ForceSDCardPermission: 0
@@ -168,7 +168,7 @@ PlayerSettings:
   StripUnusedMeshComponents: 1
   VertexChannelCompressionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 
   tvOSSdkVersion: 0

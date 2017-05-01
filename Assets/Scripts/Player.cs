@@ -21,6 +21,7 @@ public class Player : Unit {
             spawnPoints = FindObjectsOfType<NetworkStartPosition>();
         }
         IsEnemy = false;
+        MGM.AddPlayer(this);
     }
 
     public override void OnStartLocalPlayer()
@@ -113,8 +114,10 @@ public class Player : Unit {
     void PlayerEndGame()
     {
         //TODO If player no have lives.
-        Lives = 3;
-        Rpc_Respawn();
+        //Lives = 3;
+        //Rpc_Respawn();
+        gameObject.SetActive(false);
+        MGM.RemovePlayer(this);
     }
 
     [ClientRpc]

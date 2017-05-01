@@ -145,7 +145,7 @@ public class Unit : NetworkBehaviour
             float _speed;
             _speed = Speed;
             int layerMask = 3 << 8;
-            //if (Physics.BoxCastNonAlloc(Vector3.MoveTowards(transform.position, transform.position + Direction, _speed * Time.deltaTime), new Vector3(0.29f, 0.29f, 0.29f), Direction, hit, Quaternion.identity, 0.1f, layerMask) > 1)
+            //if (Physics.BoxCastNonAlloc(Vector3.MoveTowards(transform.position, transform.position + Direction, _speed * Time.deltaTime), new Vector3(0.29f, 0.29f, 0.29f), Direction, hit, Quaternion.identity, 0.1f, layerMask) <= 1)
             if (!Physics.BoxCast(Vector3.MoveTowards(transform.position, transform.position + Direction, _speed * Time.deltaTime), new Vector3(0.35f, 0.29f, 0.29f), Direction, out hit, transform.rotation, 0.1f, layerMask))
             {
 
