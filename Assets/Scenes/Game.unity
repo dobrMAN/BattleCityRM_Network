@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3391,6 +3391,8 @@ MonoBehaviour:
     type: 2}
   MyArmorBlock: {fileID: 137308, guid: 0b0982252f9bbb04b8afd6b600c6ba46, type: 2}
   MyBaseBlock: {fileID: 1231929843233766, guid: 12a67370b2293c64a907d5852fbd0586,
+    type: 2}
+  MyForestBlock: {fileID: 1804472192318250, guid: c5fe4242728b9034da4ea920cbabfb74,
     type: 2}
   Level: 2
   BuildingMap: 0
@@ -14517,7 +14519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &1708535607
 Prefab:
   m_ObjectHideFlags: 0

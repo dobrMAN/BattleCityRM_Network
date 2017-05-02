@@ -26,6 +26,7 @@ public class MyGameManager : NetworkBehaviour {
     public GameObject MyBrickBlock;
     public GameObject MyArmorBlock;
     public GameObject MyBaseBlock;
+    public GameObject MyForestBlock;
     public int Level;
     public bool BuildingMap;
 
@@ -131,8 +132,15 @@ public class MyGameManager : NetworkBehaviour {
         obj.transform.SetParent(_levelMap.transform);
         NetworkServer.Spawn(obj);
     }
+
+    void SpawnForestBlock(Vector3 pos)
+    {
+        var obj = Instantiate(MyForestBlock, pos + new Vector3(0.0f, 0.3f, 0.0f), Quaternion.identity);
+        obj.transform.SetParent(_levelMap.transform);
+        NetworkServer.Spawn(obj);
+    }
     //-------------------------------------------------------------------------------------------------------------------
-//#if (UNITY_WEBGL)
+    //#if (UNITY_WEBGL)
     [Server]
         IEnumerator LoadMap(int level)
 //#else
@@ -203,6 +211,9 @@ public class MyGameManager : NetworkBehaviour {
                         break;
                     case '2':
                         SpawnArmorBlock(pos);
+                        break;
+                    case '3':
+                        SpawnForestBlock(pos);
                         break;
                     case 'B':
                         SpawnBaseBlock(pos);

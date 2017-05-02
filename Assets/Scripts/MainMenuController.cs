@@ -41,7 +41,7 @@ public class MainMenuController : MonoBehaviour {
 
 	public void OnStart()
 	{
-		AppHelper.SetParam("Level","1");
+		AppHelper.SetParam("Level","2");
         AppHelper.SetParam("Mode", "Single");
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 1;
         MyNetworkManager.singleton.StartHost();
