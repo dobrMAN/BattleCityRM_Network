@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: 5304b17b224512c4c90f92d4e213a7de
+timeCreated: 1491727081
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: RoadBlock_broken_LeftDownBack
+    100004: RoadBlock_broken_LeftDownFront
+    100006: RoadBlock_broken_LeftUp
+    100008: RoadBlock_broken_MiddleDownBack
+    100010: RoadBlock_broken_MiddleDownFront
+    100012: RoadBlock_broken_MiddleUp
+    100014: RoadBlock_broken_RightDownBack
+    100016: RoadBlock_broken_RightDownFront
+    100018: RoadBlock_broken_RightUp
+    100020: RoadBlock_unbroken_LeftDownBack
+    100022: RoadBlock_unbroken_LeftDownFront
+    100024: RoadBlock_unbroken_LeftUp
+    100026: RoadBlock_unbroken_MiddleDownBack
+    100028: RoadBlock_unbroken_MiddleDownFront
+    100030: RoadBlock_unbroken_MiddleUp
+    100032: RoadBlock_unbroken_RightDownBack
+    100034: RoadBlock_unbroken_RightDownFront
+    100036: RoadBlock_unbroken_RightUp
+    400000: //RootNode
+    400002: RoadBlock_broken_LeftDownBack
+    400004: RoadBlock_broken_LeftDownFront
+    400006: RoadBlock_broken_LeftUp
+    400008: RoadBlock_broken_MiddleDownBack
+    400010: RoadBlock_broken_MiddleDownFront
+    400012: RoadBlock_broken_MiddleUp
+    400014: RoadBlock_broken_RightDownBack
+    400016: RoadBlock_broken_RightDownFront
+    400018: RoadBlock_broken_RightUp
+    400020: RoadBlock_unbroken_LeftDownBack
+    400022: RoadBlock_unbroken_LeftDownFront
+    400024: RoadBlock_unbroken_LeftUp
+    400026: RoadBlock_unbroken_MiddleDownBack
+    400028: RoadBlock_unbroken_MiddleDownFront
+    400030: RoadBlock_unbroken_MiddleUp
+    400032: RoadBlock_unbroken_RightDownBack
+    400034: RoadBlock_unbroken_RightDownFront
+    400036: RoadBlock_unbroken_RightUp
+    2300000: RoadBlock_broken_LeftDownBack
+    2300002: RoadBlock_broken_LeftDownFront
+    2300004: RoadBlock_broken_LeftUp
+    2300006: RoadBlock_broken_MiddleDownBack
+    2300008: RoadBlock_broken_MiddleDownFront
+    2300010: RoadBlock_broken_MiddleUp
+    2300012: RoadBlock_broken_RightDownBack
+    2300014: RoadBlock_broken_RightDownFront
+    2300016: RoadBlock_broken_RightUp
+    2300018: RoadBlock_unbroken_LeftDownBack
+    2300020: RoadBlock_unbroken_LeftDownFront
+    2300022: RoadBlock_unbroken_LeftUp
+    2300024: RoadBlock_unbroken_MiddleDownBack
+    2300026: RoadBlock_unbroken_MiddleDownFront
+    2300028: RoadBlock_unbroken_MiddleUp
+    2300030: RoadBlock_unbroken_RightDownBack
+    2300032: RoadBlock_unbroken_RightDownFront
+    2300034: RoadBlock_unbroken_RightUp
+    3300000: RoadBlock_broken_LeftDownBack
+    3300002: RoadBlock_broken_LeftDownFront
+    3300004: RoadBlock_broken_LeftUp
+    3300006: RoadBlock_broken_MiddleDownBack
+    3300008: RoadBlock_broken_MiddleDownFront
+    3300010: RoadBlock_broken_MiddleUp
+    3300012: RoadBlock_broken_RightDownBack
+    3300014: RoadBlock_broken_RightDownFront
+    3300016: RoadBlock_broken_RightUp
+    3300018: RoadBlock_unbroken_LeftDownBack
+    3300020: RoadBlock_unbroken_LeftDownFront
+    3300022: RoadBlock_unbroken_LeftUp
+    3300024: RoadBlock_unbroken_MiddleDownBack
+    3300026: RoadBlock_unbroken_MiddleDownFront
+    3300028: RoadBlock_unbroken_MiddleUp
+    3300030: RoadBlock_unbroken_RightDownBack
+    3300032: RoadBlock_unbroken_RightDownFront
+    3300034: RoadBlock_unbroken_RightUp
+    4300000: RoadBlock_broken_MiddleDownFront
+    4300002: RoadBlock_broken_LeftDownFront
+    4300004: RoadBlock_broken_LeftDownBack
+    4300006: RoadBlock_broken_MiddleDownBack
+    4300008: RoadBlock_broken_RightDownBack
+    4300010: RoadBlock_broken_LeftUp
+    4300012: RoadBlock_broken_MiddleUp
+    4300014: RoadBlock_broken_RightUp
+    4300016: RoadBlock_unbroken_RightDownBack
+    4300018: RoadBlock_unbroken_MiddleDownFront
+    4300020: RoadBlock_unbroken_RightUp
+    4300022: RoadBlock_unbroken_MiddleUp
+    4300024: RoadBlock_unbroken_LeftUp
+    4300026: RoadBlock_unbroken_RightDownFront
+    4300028: RoadBlock_unbroken_LeftDownBack
+    4300030: RoadBlock_unbroken_LeftDownFront
+    4300032: RoadBlock_unbroken_MiddleDownBack
+    4300034: RoadBlock_broken_RightDownFront
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

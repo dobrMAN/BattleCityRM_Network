@@ -34,6 +34,7 @@ public class MyGameManager : NetworkBehaviour {
     private MapClass _mapData;
 
     public GameObject GameOverObj;
+    public GameObject WinObj;
 
     [SerializeField]
     public ShaderVariantCollection Shaders;
@@ -44,11 +45,14 @@ public class MyGameManager : NetworkBehaviour {
     //[SyncVar]
     public bool IsWaitPlayers = true;
     public bool IsGameOver = false;
+    public bool IsWin = false;
     [SyncVar]
     public int numPlayers;
 
     [SerializeField]
     private GameObject _waitPlayersDialog;
+    [SerializeField]
+    private GameObject _loadingScreen;
 
     //[SyncVar]
     //public MyNetworkManager NetMan;
@@ -94,21 +98,22 @@ public class MyGameManager : NetworkBehaviour {
         {
             IsGameOver = true;
             GameOverObj.GetComponent<Animation>().Play();
+            StartCoroutine(EndLevel());
         }
     }
 
     void SpawnBrickBlock(Vector3 pos)
     {
-        var obj = Instantiate(MyBrickBlock, pos+new Vector3(-0.1f,0, -0.1f), Quaternion.identity);
+        var obj = Instantiate(MyBrickBlock, pos + new Vector3(-0.1f, 0, -0.1f), Quaternion.Euler(0, -90, 0));
         obj.transform.SetParent(_levelMap.transform);
         NetworkServer.Spawn(obj);
-        obj = Instantiate(MyBrickBlock, pos + new Vector3(0.1f, 0, -0.1f), Quaternion.identity);
+        obj = Instantiate(MyBrickBlock, pos + new Vector3(0.1f, 0, -0.1f), Quaternion.Euler(0, -90, 0));
         obj.transform.SetParent(_levelMap.transform);
         NetworkServer.Spawn(obj);
-        obj = Instantiate(MyBrickBlock, pos + new Vector3(-0.1f, 0, 0.1f), Quaternion.identity);
+        obj = Instantiate(MyBrickBlock, pos + new Vector3(-0.1f, 0, 0.1f), Quaternion.Euler(0, -90, 0));
         obj.transform.SetParent(_levelMap.transform);
         NetworkServer.Spawn(obj);
-        obj = Instantiate(MyBrickBlock, pos + new Vector3(0.1f, 0, 0.1f), Quaternion.identity);
+        obj = Instantiate(MyBrickBlock, pos + new Vector3(0.1f, 0, 0.1f), Quaternion.Euler(0, -90, 0));
         obj.transform.SetParent(_levelMap.transform);
         NetworkServer.Spawn(obj);
     }
@@ -139,34 +144,10 @@ public class MyGameManager : NetworkBehaviour {
         Debug.Log("Загрузка карты.");
         if (BuildingMap)
         {
-            _mapData.MapData = new char[26*26]{
-               '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '2', '2', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '2', '2', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '1', '1', '0', '0', '1', '1', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '0', '0', '1', '1' ,   /*  initializers for row indexed by 0 */
-			   '2', '2', '0', '0', '1', '1', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '0', '0', '2', '2' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '1', '1', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '1', '1', '0', '0', '1', '1', '0', '0', '0', '1', '1', '1', '1', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', 'B', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ,   /*  initializers for row indexed by 0 */
-			   '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'    /*  initializers for row indexed by 0 */
-			        };
+            Level = 3;
+            string maptemp = "000000220000002200000000000000002200000022000000000000110022000000110011001100001100220000001100110011000011000000001111001122110000110000000011110011221100000000110000000000220000000000001100000000002200000033000011000022000011331122330000110000220000113311223333000000110000220033000033330000001100002200330000001111113333332200003311000011111133333322000033110000000022331100110011001100000000223311001100110011002211002200110011000000110022110022001100110000001100001100110011111100112211000011001100111111001122110000110011001111110000000000001100110011111100000000000011000000000000001100110000110000000111100011001100001100110001B010001111110000110011000100100011111100";
+            //_mapData.MapData = new char[26*26];
+            _mapData.MapData = maptemp.ToCharArray();
         }
         else
         {
@@ -387,10 +368,12 @@ public class MyGameManager : NetworkBehaviour {
         
         //TODO Заменить обработчик ESCAPE, выводить меню по нажатию, а не выходить сразу в главное меню.
 
-        if ((EnemyList.Count == 0) && (EnemyCount == 0))
+        if ((EnemyList.Count == 0) && (EnemyCount == 0)&&(!IsWin))
         {
             //TODO You win this level!
             //Debug.Log("You WIN!");
+            IsWin = true;
+            StartCoroutine(EndLevel());
         }
 
         if (isLocalPlayer || isClient)
@@ -419,6 +402,7 @@ public class MyGameManager : NetworkBehaviour {
 
     public void ExitGame()
     {
+        NetworkManager.singleton.ServerChangeScene("MainMenu");
         //MyNetworkManager.singleton.StopServer();
         if (isLocalPlayer)
         {
@@ -440,7 +424,9 @@ public class MyGameManager : NetworkBehaviour {
 
         MyNetworkManager.Shutdown();
         Destroy(GameObject.Find("MyNetworkManager"));
-        AppHelper.Load("MainMenu");
+        _loadingScreen.SetActive(true);
+
+    //AppHelper.Load("MainMenu");
     }
     //-------------------------------------------------------------------------------------------------------------------
 
@@ -474,6 +460,32 @@ public class MyGameManager : NetworkBehaviour {
         };
     }
 
+    IEnumerator EndLevel()
+    {
+        if (IsGameOver)
+        {
+            GameOverObj.GetComponent<Animation>().Play();
+        }
+        else
+        {
+            WinObj.GetComponent<Animation>().Play();
+        }
+
+        yield return wait5;
+
+        if (IsGameOver)
+        {
+            ExitGame();
+        } else
+        {
+            //TODO Show statistic and start next level
+            AppHelper.SetParam("Level",  (++Level).ToString());
+            _loadingScreen.SetActive(true);
+            MyNetworkManager.singleton.ServerChangeScene("Game");
+        }
+        yield return null;
+    }
+
     void SpawnOneEnemy()
     {
         if (!isServer) return;
@@ -501,6 +513,7 @@ public class MyGameManager : NetworkBehaviour {
     public void BaseDestructed()
     {
         IsGameOver = true;
-        GameOverObj.GetComponent<Animation>().Play();
+        //GameOverObj.GetComponent<Animation>().Play();
+        StartCoroutine(EndLevel());
     }
 }

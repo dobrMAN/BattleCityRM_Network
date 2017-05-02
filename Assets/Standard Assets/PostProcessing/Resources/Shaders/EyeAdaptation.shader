@@ -8,7 +8,6 @@ Shader "Hidden/Post FX/Eye Adaptation"
     CGINCLUDE
 
         #pragma target 4.5
-        #pragma multi_compile __ AUTO_KEY_VALUE
         #include "UnityCG.cginc"
         #include "Common.cginc"
         #include "EyeAdaptation.cginc"
@@ -87,12 +86,8 @@ Shader "Hidden/Post FX/Eye Adaptation"
         {
             avgLuminance = max(EPSILON, avgLuminance);
 
-        #if AUTO_KEY_VALUE
-            half keyValue = 1.03 - (2.0 / (2.0 + log2(avgLuminance + 1.0)));
-        #else
+            //half keyValue = 1.03 - (2.0 / (2.0 + log2(avgLuminance + 1.0)));
             half keyValue = _ExposureCompensation;
-        #endif
-
             half exposure = keyValue / avgLuminance;
 
             return exposure;
