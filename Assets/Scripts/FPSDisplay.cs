@@ -9,10 +9,6 @@ public class FPSDisplay : MonoBehaviour
     Text UItext;
     MyGameManager MGM;
 
-    void Start()
-    {
-        MGM = GameObject.Find("MyGameManager").GetComponent<MyGameManager>();
-    }
     void Update()
     {
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
@@ -23,8 +19,12 @@ public class FPSDisplay : MonoBehaviour
 
         if (MGM == null)
         {
-            MGM = GameObject.Find("MyGameManager").GetComponent<MyGameManager>();
-            _enemyscount = 0;
+            GameObject MGMObj;
+            MGMObj = GameObject.Find("MyGameManager");
+            if (MGMObj)
+            {
+                MGM = MGMObj.GetComponent<MyGameManager>();
+            }
         }
         else _enemyscount = MGM.EnemyList.Count;
         if (MyNetworkManager.singleton != null) _playerscount = MyNetworkManager.singleton.numPlayers;
