@@ -3214,6 +3214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _console: {fileID: 121464960}
+  loadingObj: {fileID: 1777492398}
 --- !u!4 &1550601402
 Transform:
   m_ObjectHideFlags: 0

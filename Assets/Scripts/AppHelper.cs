@@ -13,23 +13,23 @@ public static class AppHelper {
 
 
 
-	public static void Load(string sceneName, Dictionary<string, string> parameters = null) {
-		AppHelper._parameters = parameters;
-		DpLoadScreen.Instance.LoadLevel(sceneName, false, "LoadScreen");
-		//SceneManager.LoadScene(sceneName,LoadSceneMode.Single);
-	}
+	//public static void Load(string sceneName, Dictionary<string, string> parameters = null) {
+	//	_parameters = parameters;
+	//	DpLoadScreen.Instance.LoadLevel(sceneName, false, "LoadScreen");
+	//	//SceneManager.LoadScene(sceneName,LoadSceneMode.Single);
+	//}
 
-	public static void Load(string sceneName, string paramKey, string paramValue)
-	{
-		SetParam(paramKey,paramValue);
-		DpLoadScreen.Instance.LoadLevel(sceneName, false, "LoadScreen");
-        //SceneManager.LoadScene(sceneName,LoadSceneMode.Single);
-	}
+	//public static void Load(string sceneName, string paramKey, string paramValue)
+	//{
+	//	SetParam(paramKey,paramValue);
+	//	DpLoadScreen.Instance.LoadLevel(sceneName, false, "LoadScreen");
+ //       //SceneManager.LoadScene(sceneName,LoadSceneMode.Single);
+	//}
 
-    public static void Unload(string _sceneName)
-    {
-        SceneManager.UnloadSceneAsync(_sceneName);
-    }
+    //public static void Unload(string _sceneName)
+    //{
+    //    SceneManager.UnloadSceneAsync(_sceneName);
+    //}
 
 	public static Dictionary<string, string> GetSceneParameters()
 	{
@@ -46,10 +46,10 @@ public static class AppHelper {
 	{
 		if (_parameters == null)
 		{
-			AppHelper._parameters = new Dictionary<string, string> ();
+			_parameters = new Dictionary<string, string> ();
 			//Debug.Log ("Новый словарь параметров");
 		}
-		AppHelper._parameters [paramKey] = paramValue;//.Add (paramKey, paramValue);
+		_parameters [paramKey] = paramValue;//.Add (paramKey, paramValue);
 	}
 
 	public static void Quit()

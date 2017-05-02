@@ -10,10 +10,11 @@ using UnityEngine.Advertisements;
 public class MainMenuController : MonoBehaviour {
     [SerializeField]
     private GameObject _console;
-
+    [SerializeField]
+    private GameObject loadingObj;
     //public MyNetworkManager NetMan;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 #if (UNITY_ANDROID)
         Advertisement.Initialize("1385614");
         Debug.Log("Поддержка рекламы: "+Advertisement.isSupported);
@@ -29,36 +30,35 @@ public class MainMenuController : MonoBehaviour {
 		{
 			AppHelper.Quit();
 		}
-		if (Input.GetKeyDown(KeyCode.Return))
-		{
-			//AppHelper.setParam("Level","1");
-			//AppHelper.Load ("Game");
-		}
-	}
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //	//AppHelper.setParam("Level","1");
+        //	//AppHelper.Load ("Game");
+        //}
+        //TODO Как-то отловить ошибки подключения...
+
+    }
 
 	public void OnStart()
-	{	//Destroy (gameObject);
+	{
 		AppHelper.SetParam("Level","1");
         AppHelper.SetParam("Mode", "Single");
-        //NetMan.StartHost();
-        //AppHelper.Load("Game");
-        SceneManager.LoadScene("LoadScreen", LoadSceneMode.Single);
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 1;
         MyNetworkManager.singleton.StartHost();
     }
 
     public void OnCreateHost()
     {
+        loadingObj.SetActive(true);
         AppHelper.SetParam("Level", "1");
         AppHelper.SetParam("Mode", "LocalHost");
-        //NetMan.useWebSockets = true;
-        //NetMan.StartHost();
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 2;
         MyNetworkManager.singleton.StartHost();
     }
 
     public void OnConnectLocal()
     {
+        loadingObj.SetActive(true);
         AppHelper.SetParam("Level", "1");
         AppHelper.SetParam("Mode", "LocalClient");
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 2;

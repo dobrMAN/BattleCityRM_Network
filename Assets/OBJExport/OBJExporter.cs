@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using System.Text;
 using System.Collections.Generic;
 
@@ -162,7 +163,7 @@ public class OBJExporter : ScriptableWizard
         //work on export
         StringBuilder sb = new StringBuilder();
         StringBuilder sbMaterials = new StringBuilder();
-        sb.AppendLine("# Export of " + Application.loadedLevelName);
+        sb.AppendLine("# Export of " + EditorSceneManager.GetActiveScene().name);//Application.loadedLevelName);
         sb.AppendLine("# from Aaro4130 OBJ Exporter " + versionString);
         if (generateMaterials)
         {
@@ -327,14 +328,40 @@ public class OBJExporter : ScriptableWizard
                 }
             }
             string exportName = lastExportFolder + "\\" + t.name + ".png";
-            Texture2D exTexture = new Texture2D(t.width, t.height, TextureFormat.ARGB32, false);
-            exTexture.SetPixels(t.GetPixels());
+            // Create a temporary RenderTexture of the same size as the texture
+            RenderTexture tmp = RenderTexture.GetTemporary(
+                                t.width,
+                                t.height,
+                                0,
+                                RenderTextureFormat.Default,
+                                RenderTextureReadWrite.Linear);
+
+            // Blit the pixels on texture to the RenderTexture
+            Graphics.Blit(t, tmp);
+            // Backup the currently set RenderTexture
+            RenderTexture previous = RenderTexture.active;
+            // Set the current RenderTexture to the temporary one we created
+            RenderTexture.active = tmp;
+            // Create a new readable Texture2D to copy the pixels to it
+            Texture2D exTexture = new Texture2D(t.width, t.height);
+            // Copy the pixels from the RenderTexture to the new Texture
+            exTexture.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
+            exTexture.Apply();
+            // Reset the active RenderTexture
+            RenderTexture.active = previous;
+            // Release the temporary RenderTexture
+            RenderTexture.ReleaseTemporary(tmp);
+            // "myTexture2D" now has the same pixels from "texture" and it's readable.
+
+            //Texture2D exTexture = new Texture2D(t.width, t.height, TextureFormat.ARGB32, false);
+            //exTexture.SetPixels(t.GetPixels());
             System.IO.File.WriteAllBytes(exportName, exTexture.EncodeToPNG());
             return exportName;
         }
         catch (System.Exception ex)
         {
-            Debug.Log("Could not export texture : " + t.name + ". is it readable?");
+            Debug.Log("Could not export texture : " + t.name + " is it readable?");
+            Debug.Log(ex.Message);
             return "null";
         }
 

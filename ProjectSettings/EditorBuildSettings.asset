@@ -9,11 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 5f7a6625c8f6643a2aa8ad6c6d5bd03e
   - enabled: 1
-    path: Assets/Scenes/LoadScreen.unity
-    guid: 356ce1e536636b94db00c33db98fd38d
-  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: a15b1f00cf7ef3245b08cc12553cb7d3
-  - enabled: 0
-    path: Assets/DeviceConsole/PrebuiltConsoles/Dark/Dark.unity
-    guid: 89bb97f076dbc43ca848babd38d5ece2
