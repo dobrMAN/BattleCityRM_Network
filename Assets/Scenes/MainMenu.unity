@@ -356,7 +356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -212.2, y: 157.1}
+  m_AnchoredPosition: {x: -212.20001, y: 157.1}
   m_SizeDelta: {x: 210, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &94876404
@@ -4398,12 +4398,13 @@ MonoBehaviour:
   m_OnlineScene: Game
   m_SpawnPrefabs:
   - {fileID: 137308, guid: 0b0982252f9bbb04b8afd6b600c6ba46, type: 2}
-  - {fileID: 128798, guid: 49066840851e2604f8aa7b5f8e2a7f43, type: 2}
+  - {fileID: 1855017222631556, guid: 9060800930653264289efab1e14f8a52, type: 2}
   - {fileID: 1231929843233766, guid: 12a67370b2293c64a907d5852fbd0586, type: 2}
   - {fileID: 174260, guid: 1f8b37450fb3d004e9073960d4c6ff82, type: 2}
   - {fileID: 195792, guid: 89e78efe92dfe5a42837b392cdb0bf9e, type: 2}
   - {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 2}
   - {fileID: 1003837648029196, guid: 2bc6231283de77541b30ea38555b7a64, type: 2}
+  - {fileID: 1521437479129386, guid: 8c597c718c2e3cb4fae8a321bd4a5587, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 1
   m_ConnectionConfig:

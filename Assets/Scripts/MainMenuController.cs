@@ -12,6 +12,7 @@ public class MainMenuController : MonoBehaviour {
     private GameObject _console;
     [SerializeField]
     private GameObject loadingObj;
+    private string _startLevel="1";
     //public MyNetworkManager NetMan;
     // Use this for initialization
     void Start () {
@@ -41,7 +42,7 @@ public class MainMenuController : MonoBehaviour {
 
 	public void OnStart()
 	{
-		AppHelper.SetParam("Level","2");
+        AppHelper.SetParam("Level", _startLevel);
         AppHelper.SetParam("Mode", "Single");
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 1;
         MyNetworkManager.singleton.StartHost();
@@ -50,7 +51,7 @@ public class MainMenuController : MonoBehaviour {
     public void OnCreateHost()
     {
         loadingObj.SetActive(true);
-        AppHelper.SetParam("Level", "1");
+        AppHelper.SetParam("Level", _startLevel);
         AppHelper.SetParam("Mode", "LocalHost");
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 2;
         MyNetworkManager.singleton.StartHost();
@@ -59,7 +60,7 @@ public class MainMenuController : MonoBehaviour {
     public void OnConnectLocal()
     {
         loadingObj.SetActive(true);
-        AppHelper.SetParam("Level", "1");
+        AppHelper.SetParam("Level", _startLevel);
         AppHelper.SetParam("Mode", "LocalClient");
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().maxPlayers = 2;
         MyNetworkManager.singleton.GetComponent<MyNetworkManager>().FindLocalHost();

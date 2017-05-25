@@ -27,9 +27,9 @@ public class MyGameManager : NetworkBehaviour {
     public GameObject MyArmorBlock;
     public GameObject MyBaseBlock;
     public GameObject MyForestBlock;
+    public ParticleSystem SpawnFX;
     public int Level;
     public bool BuildingMap;
-
     public string MapsDir;
     private GameObject _levelMap;
     private MapClass _mapData;
@@ -94,6 +94,13 @@ public class MyGameManager : NetworkBehaviour {
 
     public void RemovePlayer(Player _player)
     {
+        if (!isServer)
+        {
+            IsGameOver = true;
+            GameOverObj.GetComponent<Animation>().Play();
+            return;
+        }
+
         Players.Remove(_player);
         if (Players.Count<1)
         {
@@ -511,6 +518,11 @@ public class MyGameManager : NetworkBehaviour {
     IEnumerator PrespawnEnemy()
     {
         //TODO Start GFX of spwning enemy, then check if SpawnPosition is free.
+        GameObject _SpawnFX = Instantiate(SpawnFX.gameObject, EnemySpawns[CurrentEnemySpawn].position, EnemySpawns[CurrentEnemySpawn].rotation, EnemySpawns[CurrentEnemySpawn]);
+        NetworkServer.Spawn(_SpawnFX);
+        yield return wait5;
+        NetworkServer.Destroy(_SpawnFX);
+        
        yield return null;
     }
 

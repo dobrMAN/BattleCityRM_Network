@@ -92,7 +92,7 @@ public class Player : Unit {
 
         if (_bullet.IsEnemy)
         {
-            PlayerDie();
+            Rpc_PlayerDie();
         }
         else
         {
@@ -101,10 +101,14 @@ public class Player : Unit {
         }
     }
 
-    void PlayerDie()
+    [ClientRpc]
+    void Rpc_PlayerDie()
     {
         //TODO Die player
         UnitDestroy();
+
+        //if (!isClient) return;
+
         if (--Lives == 0)
             PlayerEndGame();
         else
@@ -120,7 +124,7 @@ public class Player : Unit {
         MGM.RemovePlayer(this);
     }
 
-    [ClientRpc]
+    //[ClientRpc]
     void Rpc_Respawn()
     {
         if (isLocalPlayer)
