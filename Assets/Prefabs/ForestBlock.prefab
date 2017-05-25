@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33109872199386778}
   - component: {fileID: 64561976376668786}
   - component: {fileID: 23038826825709100}
+  - component: {fileID: 114889897833678838}
   m_Layer: 0
   m_Name: ForestBlock
   m_TagString: Untagged
@@ -166,3 +167,35 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114889897833678838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804472192318250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 197
+    i1: 254
+    i2: 66
+    i3: 66
+    i4: 114
+    i5: 139
+    i6: 144
+    i7: 52
+    i8: 218
+    i9: 78
+    i10: 169
+    i11: 32
+    i12: 203
+    i13: 171
+    i14: 251
+    i15: 116
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
